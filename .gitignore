@@ -1,0 +1,23 @@
+# Claude Code
+.claude
+CLAUDE.md
+
+# VSCode
+.vscode
+
+# Swift / Xcode
+.build/
+.swiftpm/
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+DerivedData/
+*.resolved
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# debug
+.shuvi_history.json
