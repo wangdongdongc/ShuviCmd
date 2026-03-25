@@ -1,53 +1,54 @@
-# ShuviCmd
+# Shuvi
 
-A macOS command-line AI agent written in Swift 6.0. It connects to OpenAI-compatible APIs and executes bash commands on your behalf, with user confirmation before each execution.
+A macOS command-line AI agent. It connects to OpenAI-compatible APIs and executes bash commands on your behalf, with user confirmation before each execution.
 
 ## Features
 
 - Natural language to bash command execution with confirmation prompts
 - Streaming terminal output with color-coded blocks (text, thinking, tool calls, errors)
 - Session history persistence and continuation via `--continue`
-- Configurable model, API endpoint, and thinking level via `~/.shuvi/config.json`
-- Graceful shutdown with SIGINT handling
+- Configurable model, API endpoint, and thinking level
 
 ## Requirements
 
 - macOS 13+
-- Swift 6.0+
 
 ## Installation
 
 ```bash
-git clone <repo-url>
-cd ShuviCmd
-swift build
+brew tap wangdongdongc/tap
+brew install shuvi
 ```
 
 ## Usage
 
 ```bash
-swift run shuvi "your prompt here"    # Run with a prompt
-swift run shuvi --continue            # Continue previous session
-swift run shuvi --help                # Show help
+shuvi "list all files in current directory"
+shuvi -c "keep going"     # Continue previous session
+shuvi -h                  # Show help
 ```
+
+On first run, Shuvi will create `~/.shuvi/config.json` and prompt you for an API key.
 
 ## Configuration
 
-Create `~/.shuvi/config.json`:
+`~/.shuvi/config.json`:
 
 ```json
 {
   "apiKey": "your-api-key",
   "baseUrl": "https://api.openai.com/v1",
   "model": "gpt-5.4-mini",
-  "thinkingLevel": "default"
+  "thinkingLevel": "medium"
 }
 ```
 
-## Dependencies
-
-- [ShuviAgentCore](https://github.com/wangdongdongc/ShuviAgentCore) — AI agent framework providing core agent, AI abstraction, and OpenAI provider
-- [ShuviMarkitdown](https://github.com/wangdongdongc/ShuviMarkitdown) — Document parsing utilities
+| Field | Default | Description |
+|-------|---------|-------------|
+| `apiKey` | — | OpenAI-compatible API key (required) |
+| `baseUrl` | `https://api.openai.com/v1` | API base URL |
+| `model` | `gpt-5.4-mini` | Model ID |
+| `thinkingLevel` | `medium` | Thinking level: off, minimal, low, medium, high, xhigh |
 
 ## License
 

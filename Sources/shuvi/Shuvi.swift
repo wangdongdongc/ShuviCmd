@@ -190,17 +190,9 @@ struct Shuvi {
 
         let cwd = FileManager.default.currentDirectoryPath
         let systemPrompt = """
-        You are a command-line assistant running on macOS. You can execute bash commands and read files to help the user accomplish tasks.
-
-        Current working directory: \(cwd)
-
-        Guidelines:
-        - The user will confirm each bash command before execution. If they reject with feedback, adjust accordingly.
-        - Always provide the "description" parameter to briefly explain what each bash command does.
-        - Use the "read" tool to read files, directories, or URLs. It supports text files (with line numbers and pagination), PDF, DOCX, XLSX, HTML, Jupyter Notebook, and web pages. The read tool executes automatically without user confirmation.
-        - Be concise in your explanations.
-        - Your output is displayed directly in a terminal. Use plain text, avoid Markdown formatting (no #, **, ```, etc.). Use indentation and line breaks for structure instead.
-        - When a task is complete, summarize what was done.
+        You are a macOS command-line assistant. CWD: \(cwd)
+        Act immediately with tools — do not describe commands in text. The system confirms bash execution automatically.
+        Always include the "description" parameter in bash calls. Use plain text output, no Markdown.
         """
 
         // Terminal renderer for streaming + collapse
